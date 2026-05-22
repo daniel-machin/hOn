@@ -176,9 +176,9 @@ class HonSwitchEntity(HonBaseSwitchEntity):
             if type(setting) == HonParameter:
                 return
             if self.invert:
-                setting.value = setting.min if isinstance(setting, HonParameterRange) else 0
+                setting.value = setting.min if isinstance(setting, HonParameterRange) else "0"
             else:
-                setting.value = setting.max if isinstance(setting, HonParameterRange) else 1
+                setting.value = setting.max if isinstance(setting, HonParameterRange) else "1"
             await self._device.commands["settings"].send()
             value = str(setting.value)
         else:
@@ -195,9 +195,9 @@ class HonSwitchEntity(HonBaseSwitchEntity):
             if type(setting) == HonParameter:
                 return
             if self.invert:
-                setting.value = setting.max if isinstance(setting, HonParameterRange) else 1
+                setting.value = setting.max if isinstance(setting, HonParameterRange) else "1"
             else:
-                setting.value = setting.min if isinstance(setting, HonParameterRange) else 0
+                setting.value = setting.min if isinstance(setting, HonParameterRange) else "0"
             await self._device.commands["settings"].send()
             value = str(setting.value)
         else:
